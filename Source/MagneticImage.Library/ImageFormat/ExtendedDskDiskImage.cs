@@ -1,7 +1,7 @@
 using System;
-using DskTool.LogicalDisk;
+using MagneticImage.LogicalDisk;
 
-namespace DskTool.ImageFormat
+namespace MagneticImage.ImageFormat
 {
     public enum Density
     {

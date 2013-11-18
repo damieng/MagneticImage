@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace DskTool.FormatEncodings
+namespace MagneticImage.FormatEncodings
 {
     public class GcrFormatEncoding //: FormatEncoding
     {

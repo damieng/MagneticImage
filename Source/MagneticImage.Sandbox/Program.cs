@@ -1,9 +1,9 @@
 using System;
 using System.IO;
-using DskTool.Readers;
-using DskTool.Writer;
+using MagneticImage.Reader;
+using MagneticImage.Writer;
 
-namespace DskTool
+namespace MagneticImage.Sandbox
 {
     class Program
     {
@@ -24,20 +24,6 @@ namespace DskTool
 
             var output = new XmlDiskWriter(Console.Out, BinaryTextMode.AsciiHexSwitch);
             output.Write(diskImage);
-        }
-    }
-
-    class Arguments
-    {
-        private readonly string inputFile;
-
-        public string InputFile { get { return inputFile; } }
-
-        public bool IsValid { get { return true; } }
-
-        public Arguments(string[] args)
-        {
-            inputFile = args[0];
         }
     }
 }

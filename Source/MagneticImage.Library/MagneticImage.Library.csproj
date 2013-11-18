@@ -45,7 +45,6 @@
     <Compile Include="LogicalDisk\Sector.cs" />
     <Compile Include="LogicalDisk\Side.cs" />
     <Compile Include="LogicalDisk\Track.cs" />
-    <Compile Include="Reader\DskDiskImage.cs" />
     <Compile Include="Reader\StandardDsk.cs" />
     <Compile Include="Writer\XmlDiskWriter.cs" />
     <Compile Include="QuotedPrintable.cs" />

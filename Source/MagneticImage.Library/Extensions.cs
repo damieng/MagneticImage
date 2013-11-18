@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace DskTool
+namespace MagneticImage
 {
 	static class Extensions
 	{

@@ -1,6 +1,6 @@
 using System;
 
-namespace DskTool.FormatEncodings
+namespace MagneticImage.FormatEncodings
 {
     public class BitPattern
     {

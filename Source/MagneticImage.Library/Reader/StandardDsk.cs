@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using DskTool.ImageFormat;
-using DskTool.LogicalDisk;
+using MagneticImage.ImageFormat;
+using MagneticImage.LogicalDisk;
 
-namespace DskTool.Readers
+namespace MagneticImage.Reader
 {
     public class DskDiskImageReader
     {

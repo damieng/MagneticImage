@@ -3,9 +3,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml;
-using DskTool.LogicalDisk;
+using MagneticImage.LogicalDisk;
 
-namespace DskTool.Writer
+namespace MagneticImage.Writer
 {
     public enum BinaryTextMode
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace DskTool.LogicalDisk
+namespace MagneticImage.LogicalDisk
 {
     public abstract class DiskImage
     {
