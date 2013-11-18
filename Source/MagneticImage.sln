@@ -5,6 +5,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagneticImage.Sandbox", "Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MagneticImage.Library", "MagneticImage.Library\MagneticImage.Library.csproj", "{EEB5DE74-DF74-4DDA-887B-DA4A2A0C86F6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{8701F67A-E796-48CD-8A94-BC5F023279FF}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+		..\LICENSE = ..\LICENSE
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -19,6 +25,8 @@ Global
 		{EEB5DE74-DF74-4DDA-887B-DA4A2A0C86F6}.Debug|x86.Build.0 = Debug|Any CPU
 		{EEB5DE74-DF74-4DDA-887B-DA4A2A0C86F6}.Release|x86.ActiveCfg = Release|Any CPU
 		{EEB5DE74-DF74-4DDA-887B-DA4A2A0C86F6}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = MagneticImage.Sandbox\MagneticImage.Sandbox.csproj
