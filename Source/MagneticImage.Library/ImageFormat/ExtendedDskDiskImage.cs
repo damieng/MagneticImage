@@ -27,5 +27,7 @@ namespace MagneticImage.ImageFormat
         public Density Density { get; set; }
 
         public RecordingMode RecordingMode { get; set; }
+
+        internal static readonly string Signature = "EXTENDED CPC DSK File\r\nDisk-Info\r\n";
     }
 }

@@ -18,12 +18,12 @@ namespace MagneticImage.Sandbox
                 return;
             }
 
-            var input = File.OpenRead(arguments.InputFile);
-            var diskImage = DskDiskImageReader.Load(input);
-            diskImage.FileName = arguments.InputFile;
+            var diskImage = DskImageReader.Read(arguments.InputFile);
 
-            var output = new XmlDiskWriter(Console.Out, BinaryTextMode.AsciiHexSwitch);
-            output.Write(diskImage);
+            var xmlOutput = new XmlDiskWriter(Console.Out, BinaryTextMode.AsciiHexSwitch);
+            xmlOutput.Write(diskImage);
+
+            DskImageWriter.Write(diskImage, "testing.dsk");
         }
     }
 }

@@ -45,10 +45,11 @@
     <Compile Include="LogicalDisk\Sector.cs" />
     <Compile Include="LogicalDisk\Side.cs" />
     <Compile Include="LogicalDisk\Track.cs" />
-    <Compile Include="Reader\StandardDsk.cs" />
     <Compile Include="Writer\XmlDiskWriter.cs" />
     <Compile Include="QuotedPrintable.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Reader\DskImageReader.cs" />
+    <Compile Include="Writer\DskImageWriter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

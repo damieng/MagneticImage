@@ -6,27 +6,33 @@ using MagneticImage.LogicalDisk;
 
 namespace MagneticImage.Reader
 {
-    public class DskDiskImageReader
+    public class DskImageReader
     {
-        private const string standardImageSignature = "MV - CPC";
-        private const string extendedImageSignature = "EXTENDED CPC DSK File\r\nDisk-Info\r\n";
         private const string trackSignature = "Track-Info\r\n\0";
 
         public static Type Identify(Stream stream)
         {
-            stream.Seek(0, SeekOrigin.Begin);
+            stream.Position = 0;
             var readSignature = stream.ReadText(34);
 
-            if (readSignature.StartsWith(standardImageSignature))
+            if (readSignature.StartsWith(StandardDskDiskImage.Signature))
                 return typeof(StandardDskDiskImage);
 
-            if (readSignature.StartsWith(extendedImageSignature))
+            if (readSignature.StartsWith(ExtendedDskDiskImage.Signature))
                 return typeof(ExtendedDskDiskImage);
 
             return null;
         }
 
-        public static DiskImage Load(Stream rs)
+        public static DiskImage Read(string fileName)
+        {
+            var input = File.OpenRead(fileName);
+            var diskImage = DskImageReader.Read(input);
+            diskImage.FileName = fileName;
+            return diskImage;
+        }
+
+        public static DiskImage Read(Stream rs)
         {
             var type = Identify(rs);
 
