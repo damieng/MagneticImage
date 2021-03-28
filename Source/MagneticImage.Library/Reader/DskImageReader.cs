@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using MagneticImage.ImageFormat;
 using MagneticImage.LogicalDisk;
@@ -86,18 +85,20 @@ namespace MagneticImage.Reader
 
             rs.Ignore(3);
 
-            var track = new PD765FormattedTrack();
-            track.Number = (uint)rs.ReadByte();
-            track.Side = (byte)rs.ReadByte();
-            track.Size = trackSize;
+            var track = new PD765FormattedTrack
+            {
+                Number = (uint)rs.ReadByte(),
+                Side = (byte)rs.ReadByte(),
+                Size = trackSize,
 
-            track.DataRate = (byte)rs.ReadByte();
-            track.RecordingMode = (byte)rs.ReadByte();
-            track.SectorSize = CalculateSectorSize(image, rs.ReadByte());
-            track.SectorCount = (byte)rs.ReadByte();
+                DataRate = (byte)rs.ReadByte(),
+                RecordingMode = (byte)rs.ReadByte(),
+                SectorSize = CalculateSectorSize(image, rs.ReadByte()),
+                SectorCount = (byte)rs.ReadByte(),
 
-            track.Gap = (byte)rs.ReadByte();
-            track.Filler = (byte)rs.ReadByte();
+                Gap = (byte)rs.ReadByte(),
+                Filler = (byte)rs.ReadByte()
+            };
 
             for (var i = 0; i < track.SectorCount; i++)
                 track.Sectors.Add(ReadSector(rs, image));

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MagneticImage.Sandbox": {
+      "commandName": "Project",
+      "commandLineArgs": "\"D:\\Retro\\Sinclair\\Spectrum\\Plus3Disks\\Formats\\SpectrumPlus3-173K.dsk\""
+    }
+  }
+}
