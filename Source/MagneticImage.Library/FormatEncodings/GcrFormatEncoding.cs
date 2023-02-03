@@ -1,11 +1,9 @@
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace MagneticImage.FormatEncodings
 {
-    public class GcrFormatEncoding //: FormatEncoding
+    public class GcrFormatEncoding
     {
         private static List<BitPattern> table = new List<BitPattern> {
             new BitPattern("0000", "11001"),
@@ -26,8 +24,8 @@ namespace MagneticImage.FormatEncodings
             new BitPattern("1111", "01111")
         };
 
-        private Dictionary<byte, byte> encodingTable = table.ToDictionary(k => k.Decoded, k => k.Encoded);
-        private Dictionary<byte, byte> decodingTable = table.ToDictionary(k => k.Encoded, k => k.Decoded);
+        private readonly Dictionary<byte, byte> encodingTable = table.ToDictionary(k => k.Decoded, k => k.Encoded);
+        private readonly Dictionary<byte, byte> decodingTable = table.ToDictionary(k => k.Encoded, k => k.Decoded);
         private const int decodedBits = 4;
         private const int encodedBits = 5;
     }

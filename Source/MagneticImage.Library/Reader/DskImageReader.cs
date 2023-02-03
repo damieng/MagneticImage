@@ -26,18 +26,14 @@ namespace MagneticImage.Reader
         public static DiskImage Read(string fileName)
         {
             var input = File.OpenRead(fileName);
-            var diskImage = DskImageReader.Read(input);
+            var diskImage = Read(input);
             diskImage.FileName = fileName;
             return diskImage;
         }
 
         public static DiskImage Read(Stream rs)
         {
-            var type = Identify(rs);
-
-            if (type == null)
-                throw new InvalidOperationException();
-
+            var type = Identify(rs) ?? throw new InvalidOperationException();
             rs.Seek(0x22, SeekOrigin.Begin);
 
             var image = Activator.CreateInstance(type) as DiskImage;
@@ -113,14 +109,16 @@ namespace MagneticImage.Reader
 
         private static Sector ReadSector(Stream rs, DiskImage image)
         {
-            var sector = new PD765Sector();
-            sector.TrackId = rs.ReadByte();
-            sector.SideId = rs.ReadByte();
-            sector.Id = rs.ReadByte();
-            sector.Size = CalculateSectorSize(image, rs.ReadByte());
-            sector.Flag1 = (byte)rs.ReadByte();
-            sector.Flag2 = (byte)rs.ReadByte();
-            sector.DataLength = rs.ReadWord();
+            var sector = new PD765Sector
+            {
+                TrackId = rs.ReadByte(),
+                SideId = rs.ReadByte(),
+                Id = rs.ReadByte(),
+                Size = CalculateSectorSize(image, rs.ReadByte()),
+                Flag1 = (byte)rs.ReadByte(),
+                Flag2 = (byte)rs.ReadByte(),
+                DataLength = rs.ReadWord()
+            };
             return sector;
         }
 

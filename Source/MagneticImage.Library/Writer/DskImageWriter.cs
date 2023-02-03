@@ -1,9 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using MagneticImage.ImageFormat;
 using MagneticImage.LogicalDisk;
+using System;
+using System.IO;
+using System.Linq;
 
 namespace MagneticImage.Reader
 {
@@ -35,15 +34,18 @@ namespace MagneticImage.Reader
 
             var allTracks = diskImage.Disk.Sides.SelectMany(s => s.Tracks);
 
-            if (diskImage is StandardDskDiskImage) {
+            if (diskImage is StandardDskDiskImage)
+            {
                 var maxTrackSize = allTracks.OfType<FormattedTrack>().Max(t => t.Size);
                 rs.WriteWord((ushort)maxTrackSize);
             }
 
-            if (diskImage is ExtendedDskDiskImage) {
+            if (diskImage is ExtendedDskDiskImage)
+            {
                 rs.Position += 2;
                 foreach (var track in allTracks.OrderBy(t => t.Number).ThenBy(t => t.Side))
-                    if (track is FormattedTrack) {
+                    if (track is FormattedTrack)
+                    {
                         var trackSize = ((FormattedTrack)track).Size;
                         rs.WriteByte((byte)(trackSize / 256));
                     }
@@ -73,7 +75,8 @@ namespace MagneticImage.Reader
 
         private static byte GetSectorSize(int sectorSize, DiskImage diskImage)
         {
-            for (byte i = 0; i < diskImage.SectorSizes.Length; i ++) {
+            for (byte i = 0; i < diskImage.SectorSizes.Length; i++)
+            {
                 if (diskImage.SectorSizes[i] >= sectorSize)
                     return i;
             }
@@ -83,13 +86,14 @@ namespace MagneticImage.Reader
 
         private static void WriteFormattedTrack(Stream s, FormattedTrack track, long sectorDataPosition, DiskImage diskImage)
         {
-            if (track is PD765FormattedTrack) {
-                var pdTrack = (PD765FormattedTrack)track;
+            if (track is PD765FormattedTrack pdTrack)
+            {
                 s.WriteByte(pdTrack.DataRate);
                 s.WriteByte(pdTrack.RecordingMode);
                 s.WriteByte(GetSectorSize(pdTrack.SectorSize, diskImage));
             }
-            else {
+            else
+            {
                 s.WriteByte(0);
                 s.WriteByte(0);
                 s.WriteByte(0);
@@ -115,12 +119,12 @@ namespace MagneticImage.Reader
             rs.WriteByte((byte)sector.Id);
             rs.WriteByte((byte)(sector.Size / 256));
 
-            if (sector is PD765Sector) {
-                var pdSector = (PD765Sector)sector;
+            if (sector is PD765Sector pdSector)
+            {
                 rs.WriteByte(pdSector.Flag1);
                 rs.WriteByte(pdSector.Flag2);
                 rs.WriteWord(pdSector.DataLength);
             }
         }
-   }
+    }
 }

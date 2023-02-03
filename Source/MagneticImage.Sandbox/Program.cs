@@ -13,8 +13,9 @@ namespace MagneticImage.Sandbox
             if (!arguments.IsValid)
                 return;
 
-            if (!File.Exists(arguments.InputFile)) {
-                Console.Error.WriteLine(String.Format("Input file \"{0}\" not found", arguments.InputFile));
+            if (!File.Exists(arguments.InputFile))
+            {
+                Console.Error.WriteLine(string.Format("Input file \"{0}\" not found", arguments.InputFile));
                 return;
             }
 

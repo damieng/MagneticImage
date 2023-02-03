@@ -1,5 +1,3 @@
-using System;
-
 namespace MagneticImage.LogicalDisk
 {
     public abstract class DiskImage

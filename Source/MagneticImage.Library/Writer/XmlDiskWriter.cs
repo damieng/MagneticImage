@@ -1,9 +1,7 @@
-using System;
+using MagneticImage.LogicalDisk;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Xml;
-using MagneticImage.LogicalDisk;
 
 namespace MagneticImage.Writer
 {
@@ -19,7 +17,6 @@ namespace MagneticImage.Writer
     class WriteContext
     {
         public FormattedTrack DefaultTrack { get; set; }
-
         public Sector DefaultSector { get; set; }
     }
 
@@ -51,21 +48,24 @@ namespace MagneticImage.Writer
         private WriteContext CreateContext(DiskImage image)
         {
             var tracks = image.Disk.Sides
-				.SelectMany(s => s.Tracks)
-				.OfType<FormattedTrack>()
-				.ToList();
+                .SelectMany(s => s.Tracks)
+                .OfType<FormattedTrack>()
+                .ToList();
 
             var sectors = tracks
-				.SelectMany(f => f.Sectors)
-				.ToList();
+                .SelectMany(f => f.Sectors)
+                .ToList();
 
-            return new WriteContext {
-                DefaultTrack = new FormattedTrack {
+            return new WriteContext
+            {
+                DefaultTrack = new FormattedTrack
+                {
                     Gap = tracks.MostCommon(t => t.Gap),
                     Filler = tracks.MostCommon(t => t.Filler),
                     Size = tracks.MostCommon(t => t.Size)
                 },
-                DefaultSector = new Sector {
+                DefaultSector = new Sector
+                {
                     Size = sectors.MostCommon(s => s.Size)
                 }
             };
@@ -174,7 +174,8 @@ namespace MagneticImage.Writer
 
         private void Write(byte[] binary, int length)
         {
-            switch (binaryTextMode) {
+            switch (binaryTextMode)
+            {
                 case BinaryTextMode.Base64:
                     xml.WriteBase64(binary, 0, length);
                     break;

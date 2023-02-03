@@ -19,9 +19,9 @@ namespace MagneticImage.LogicalDisk
 
     public class PD765Sector : Sector
     {
-        public Byte Flag1 { get; set; }
+        public byte Flag1 { get; set; }
 
-        public Byte Flag2 { get; set; }
+        public byte Flag2 { get; set; }
 
         public ushort DataLength { get; set; }
     }

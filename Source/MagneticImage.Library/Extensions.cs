@@ -1,9 +1,8 @@
 using System;
-using System.IO;
-using System.Text;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
+using System.Text;
 
 namespace MagneticImage
 {
@@ -48,10 +47,10 @@ namespace MagneticImage
         public static TReturn MostCommon<TReturn, T>(this IEnumerable<T> source, Func<T, TReturn> property)
         {
             return source
-					.GroupBy(s => property(s))
-					.OrderByDescending(g => g.Count())
-					.Select(g => g.Key)
-					.FirstOrDefault();
+                    .GroupBy(s => property(s))
+                    .OrderByDescending(g => g.Count())
+                    .Select(g => g.Key)
+                    .FirstOrDefault();
         }
     }
 }
