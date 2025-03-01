@@ -1,19 +1,15 @@
-using System;
+namespace MagneticImage.Sandbox;
 
-namespace MagneticImage.Sandbox
+class Arguments
 {
-    class Arguments
+    public string InputFile { get; }
+
+    public bool IsValid
+        => !string.IsNullOrWhiteSpace(InputFile);
+
+    public Arguments(string[] args)
     {
-        private readonly string inputFile;
-
-        public string InputFile { get { return inputFile; } }
-
-        public bool IsValid { get { return !string.IsNullOrWhiteSpace(inputFile); } }
-
-        public Arguments(string[] args)
-        {
-            if (args.Length > 0)
-                inputFile = args[0];
-        }
+        if (args.Length > 0)
+            InputFile = args[0];
     }
 }
